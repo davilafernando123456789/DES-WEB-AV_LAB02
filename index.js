@@ -34,10 +34,8 @@ app.post('/contact', (req, res) => {
     res.send('<h1>Peticion POST Recibida para guardar formulario</h1>');
 });
 
-app.put('/about', (req, res) => { 
-    res.send('<h1>Peticion Actualizacion Recibida</h1>');
-});
-app.put('/actualizar:userId', (req, res) => { 
+
+app.put('/actualizar/:userId', (req, res) => { 
     res.send(`Usuario ${req.params.userId} Actualizado`);
 });
 app.delete('/eliminar/:userId', (req, res) => { 

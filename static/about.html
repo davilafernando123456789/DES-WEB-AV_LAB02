@@ -22,17 +22,42 @@
                     <th></th>
                 </tr>
             </thead>
-            
+
             <tbody>
-                    <tr>
-                        <td>Jose</td>
-                        <td>Davila</td>
-                        <td><a href="#"><span>Actualizar</span></a></td>
-                        <td><a href="#"><span>Eliminar</span></a></td>
-                    </tr>
+                <tr>
+                    <td>Jose</td>
+                    <td>Davila</td>
+                    <td><button onclick="enviarSolicitudPUT(4)">Enviar Solicitud PUT</button></td>
+                    <td><button onclick="enviarSolicitudDELETE(4)">Enviar Solicitud DELETE</button></td>
+                </tr>
             </tbody>
         </table>
     </div>
-</div>
+
+    <div id="response"></div>
+
+    <script>
+        function enviarSolicitudPUT(userId) {
+            fetch(`/actualizar/${userId}`, {
+                method: "PUT",
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("response").innerHTML = data;
+            })
+            .catch(error => console.error(error));
+        }
+
+        function enviarSolicitudDELETE(userId) {
+            fetch(`/eliminar/${userId}`, {
+                method: "DELETE",
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("response").innerHTML = data;
+            })
+            .catch(error => console.error(error));
+        }
+    </script>
 </body>
 </html>
